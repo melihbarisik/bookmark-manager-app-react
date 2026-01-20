@@ -1,0 +1,72 @@
+@use '../../styles/abstracts' as *;
+
+.checkboxContainer {
+  display: flex;
+  align-items: center;
+  padding: convertToRem(8) convertToRem(12);
+  cursor: pointer;
+  gap: convertToRem(12);
+  position: relative;
+  transition: background-color 0.2s;
+
+  &:hover {
+    cursor: pointer;
+    border-radius: $radius-md;
+  }
+}
+
+.hiddenCheckbox {
+  // Gerçek checkbox'ı tamamen gizliyoruz ama odaklanılabilir kalıyor
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.customCheckbox {
+  height: convertToRem(16);
+  width: convertToRem(16);
+  background-color: transparent;
+  border: 1.5px solid var(--color-neutral-400); // Figma'daki pasif kenarlık
+  border-radius: $radius-sm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+
+  // Check işareti (V harfi) için pseudo-element
+  &::after {
+    content: "";
+    display: none; // Başlangıçta gizli
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-bottom: 2px;
+  }
+}
+
+// Checkbox seçildiğinde (Checked state)
+.hiddenCheckbox:checked ~ .customCheckbox {
+  background-color: var(--color-teal-700);
+  border-color: var(--color-teal-700);
+
+  &::after {
+    display: block; // İşareti göster
+  }
+}
+
+.labelTexts {
+  font-size: $text-sm;
+  flex: 1; // Yazının kalan alanı kaplamasını sağlar (Count'u sağa itmek için)
+}
+
+.count {
+  font-size: $text-xs;
+  color: var(--color-neutral-500);
+  background-color: var(--color-neutral-100);
+  padding: 2px 8px;
+  border-radius: $radius-full;
+}

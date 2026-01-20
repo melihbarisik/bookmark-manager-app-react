@@ -1,0 +1,58 @@
+// styles/base/_reset.scss
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  // Sayfa kaydırmasını daha akıcı yapar
+  scroll-behavior: smooth;
+  // Font boyutunu %62.5 yapmak, 1rem = 10px hesaplamasını kolaylaştırır (isteğe bağlı)
+  font-size: 62.5%; 
+}
+
+body {
+  // Varsayılan font boyutu (1.6rem = 16px)
+  font-size: 1.6rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}

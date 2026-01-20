@@ -1,0 +1,9 @@
+@mixin text-style($preset) {
+  $style: map-get($typography-presets, $preset);
+  
+  font-family: $font-family-main;
+  font-size: map-get($style, size);
+  font-weight: map-get($style, weight);
+  line-height: map-get($style, line-height);
+  letter-spacing: map-get($style, spacing);
+}

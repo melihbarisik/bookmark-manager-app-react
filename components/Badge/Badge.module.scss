@@ -1,0 +1,20 @@
+@use '../../styles/abstracts' as *;
+
+.badge {
+  display: flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: $radius-full;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  max-height: convertToRem(24);
+ 
+
+  &.primary {
+    background-color: $color-neutral-100;
+    color: $color-neutral-500;
+  }
+}

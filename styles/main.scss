@@ -1,0 +1,60 @@
+@import './abstracts/index';
+@import './base/index';
+
+
+
+/* --- 1. CSS Değişkenleri (Değerlerin Tutulduğu Yer) --- */
+:root {
+  // Light Mode (Varsayılan)
+  --color-neutral-900: #051513;   
+  --color-neutral-800: #4c5c59;  
+  --color-neutral-500: #898492;  
+  --color-neutral-400: #C0CFCC; 
+  --color-neutral-300: #DDE8EF; 
+  --color-neutral-100: #E8F0EF; 
+  --color-neutral-0: #FFFFFF; 
+
+  --color-teal-800: #013C3B; 
+  --color-teal-700: #014745; 
+
+  --color-red-800: #CB0A04; 
+  --color-red-600: #FD4740;
+  --color-text: #4d4d4d;
+}
+
+[data-theme='dark'] {
+  // Dark Mode Değişimleri
+  --color-neutral-900: #001414;   
+  --color-neutral-800: #001F1F;  
+  --color-neutral-500: #002E2D;  
+  --color-neutral-400: #004241; 
+  --color-neutral-300: #00706e; 
+  --color-neutral-100: #B1B9B9; 
+  --color-neutral-0: #FFFFFF; // Not: Genelde dark modda bu renk siyah olur, ama verdiğin değeri korudum.
+  --color-text-main: #051513;
+}
+
+/* --- 2. SASS Değişkenleri (Kodda Çağıracağın İsimler) --- */
+$color-neutral-900: var(--color-neutral-900);
+$color-neutral-800: var(--color-neutral-800);
+$color-neutral-500: var(--color-neutral-500);
+$color-neutral-400: var(--color-neutral-400);
+$color-neutral-300: var(--color-neutral-300);
+$color-neutral-100: var(--color-neutral-100);
+$color-neutral-0: var(--color-neutral-0);
+
+$color-teal-800: var(--color-teal-800);
+$color-teal-700: var(--color-teal-700);
+
+$color-red-800: var(--color-red-800);
+$color-red-600: var(--color-red-600);
+
+$bg-color: var(--color-neutral-0);
+$text-color: var(--color-text-main);
+
+/* 3. UYGULAMA */
+body {
+  background-color: $color-neutral-100; // !important ile zorlayalım
+  font-family: $font-family-main;
+  transition: all 0.5s ease;
+}

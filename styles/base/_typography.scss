@@ -1,0 +1,42 @@
+// Preset Değerleri (Map Yapısı)
+// Font Family & Weights
+$font-family-main: 'Manrope', sans-serif;
+$weight-bold: 700;     // Bold
+$weight-semibold: 600; // SemiBold
+$weight-medium: 500;   // Medium
+
+// Preset 1 (24px)
+$text-p1-size: 1.5rem;
+$text-p1-weight: $weight-bold;
+$text-p1-lh: 1.4;
+
+// Preset 2 (20px)
+$text-p2-size: 1.25rem;
+$text-p2-weight: $weight-bold;
+$text-p2-lh: 1.2;
+
+// Preset 2 SemiBold
+$text-p2-sb-weight: $weight-semibold;
+
+// Preset 3 (16px)
+$text-p3-size: 1rem;
+$text-p3-weight: $weight-semibold;
+$text-p3-lh: 1.4;
+
+// Preset 3 Medium
+$text-p3-m-weight: $weight-medium;
+$text-p3-m-lh: 1.3;
+
+// Preset 4 (14px)
+$text-p4-size: 0.875rem;
+$text-p4-weight: $weight-semibold;
+$text-p4-lh: 1.4;
+
+// Preset 4 Medium
+$text-p4-m-weight: $weight-medium;
+$text-p4-m-lh: 1.5;
+
+// Preset 5 (12px)
+$text-p5-size: 0.75rem;
+$text-p5-weight: $weight-medium;
+$text-p5-lh: 1.4;

@@ -1,0 +1,31 @@
+@use '../../styles/abstracts' as *;
+
+
+.searchWrapper {
+    position: relative;
+    flex: 1;
+    width: convertToRem(320);
+    height: convertToRem(45);
+
+    input {
+        width: 100%;
+        padding: convertToRem(8) convertToRem(16);
+        padding-left: 40px;
+        border: 1px solid $color-neutral-100;
+        border-radius: $radius-md;
+        outline: none;
+        transition: border-color 0.2s;
+
+        &:focus {
+            border-color: $color-neutral-100;   
+        }
+  }
+
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 45%;
+    transform: translateY(-45%);
+    color: $color-neutral-800;
+  }
+}

@@ -1,0 +1,63 @@
+// Light Mode
+$color-neutral-900: var(--color-neutral-900);
+$color-neutral-800: var(--color-neutral-800);
+$color-neutral-500: var(--color-neutral-500);
+$color-neutral-400: var(--color-neutral-400);
+$color-neutral-300: var(--color-neutral-300);
+$color-neutral-100: var(--color-neutral-100);
+$color-neutral-0:   var(--color-neutral-0);
+
+$color-teal-800: var(--color-teal-800);
+$color-teal-700: var(--color-teal-700);
+
+$color-text: var(--color-text);
+
+// Teal
+$color-teal-800 : #013C3B; 
+$color-teal-700: #014745; 
+
+// Red
+$color-red-800: #CB0A04; 
+$color-red-600 : #FD4740; 
+
+
+
+// 2. Yazı Tipleri (Typography)
+// 'Inter' Next.js projelerinde çok popülerdir, yoksa sistem fontuna düşer.
+$font-main: 'Inter', system-ui, -apple-system, sans-serif;
+
+$text-xs: 1.2rem;
+$text-sm: 1.4rem;
+$text-base: 1.6rem;
+$text-lg: 1.8rem;
+$text-xl: 2.4rem;  // Başlıklar için biraz daha büyüttük
+$text-2xl: 3.2rem; // Ana başlık için yeni ekledik
+
+// 3. Mesafe (Spacing - 8'in katları kuralı)
+// Bu kural tasarımı çok daha düzenli gösterir.
+$spacing-0: 0px;
+$spacing-025: 2px;
+$spacing-050: 4px;
+$spacing-075: 6px;
+$spacing-100: 9px;
+$spacing-125: 10px;
+$spacing-150: 12px;
+$spacing-200: 16px;
+$spacing-250: 20px;
+$spacing-300: 24px;
+$spacing-400: 32px;
+$spacing-500: 40px;
+
+
+// 4. Kenar Yumuşatma (Border Radius)
+$radius-none: 0;
+$radius-sm:   0.25rem; // 4px
+$radius-md:   0.5rem;  // 8px
+$radius-lg:   0.75rem; // 12px
+$radius-xl:   1.0rem;  // 16px
+$radius-2xl:  1.5rem;  // 24px
+$radius-full: 999px;
+
+// 5. Gölgeler (Box Shadows - Tasarıma derinlik katar)
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);

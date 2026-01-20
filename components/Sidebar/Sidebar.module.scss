@@ -1,0 +1,62 @@
+@use '../../styles/abstracts' as *;
+
+
+
+.sidebarContainer {
+    display: flex;
+    flex-direction: column;
+    gap: convertToRem(20);
+    width: convertToRem(296);
+    height: convertToRem(960);
+    background-color: $color-neutral-0;
+}
+
+.logoContainer {
+    padding: convertToRem(20);
+    height: convertToRem(62);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0 convertToRem(16);
+   
+}
+
+.contentItem {
+    display: flex;
+    align-items: center;
+    height: convertToRem(42);
+    gap: convertToRem(12);
+    padding: convertToRem(12) convertToRem(8);
+
+    &:hover {
+        cursor: pointer;
+        border-radius: $radius-2xl;
+        background-color: $color-neutral-100;
+    }
+
+   
+    
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+    // Figma'daki değerlere göre (Üst 12, Sağ-Sol 12, Alt 4)
+    padding: convertToRem(12) convertToRem(12) convertToRem(4) convertToRem(12);
+    
+    .tagsHeader { 
+        font-size: $text-xs; // Yaklaşık 12px (1.2rem)
+        color: $color-neutral-500; // Daha gri/silik bir renk
+        font-weight: 600; // Bold yerine Semi-bold daha temiz durur
+        letter-spacing: 0.05em; // Harf arasını biraz açmak profesyonel gösterir
+        text-transform: uppercase; // Her zaman büyük harf kalması için
+    }
+}
+
+.items {
+    display: flex;
+    justify-content: space-between;
+}
