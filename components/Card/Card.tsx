@@ -51,22 +51,27 @@ export default function Card({ data }: CardProps) {
 
             {/* FOOTER */}
             <div className={styles.footer}>
-                <div className={styles.footerItem}>
-                    <Image src="/images/icon-visit-count.svg" alt="" width={12} height={12} />
-                    <span>{data.visitCount}</span>
+                <div className={styles.footerLeft}>
+                    <div className={styles.footerItem}>
+                        <Image src="/images/icon-visit-count.svg" alt="" width={12} height={12} />
+                        <span>{data.visitCount}</span>
+                    </div>
+
+                    <div className={styles.footerItem}>
+                        <Image src="/images/icon-created.svg" alt="" width={12} height={12} />
+                        <span>{formatShortDate(data.createdAt)}</span>
+                    </div>
+
+                    <div className={styles.footerItem}>
+                        <Image src="/images/icon-last-visited.svg" alt="" width={12} height={12} />
+                        <span>{formatShortDate(data.lastVisited)}</span>
+                    </div>
                 </div>
 
                 <div className={styles.footerItem}>
-                    <Image src="/images/icon-created.svg" alt="" width={12} height={12} />
-                    <span>{formatShortDate(data.createdAt)}</span>
-                </div>
-
-                <div className={styles.footerItem}>
-                    <Image src="/images/icon-last-visited.svg" alt="" width={12} height={12} />
-                    <span>{formatShortDate(data.lastVisited)}</span>
+                    <Image src="/images/icon-pin.svg" alt="" width={12} height={12} />
                 </div>
             </div>
-
         </div>
     );
 }
