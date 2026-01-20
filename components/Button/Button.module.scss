@@ -1,0 +1,14 @@
+@use '../../styles/abstracts' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $color-teal-700;
+    width: convertToRem(169);
+    height: convertToRem(46);
+    gap: convertToRem(4);
+    padding: convertToRem(12) convertToRem(16);
+    border-radius: $radius-lg;
+    color: $color-neutral-0;
+}

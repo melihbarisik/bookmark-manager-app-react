@@ -1,0 +1,15 @@
+@use '../../styles/abstracts' as *;
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: convertToRem(16) convertToRem(32);
+    background-color: var(--color-neutral-0);
+    max-height: convertToRem(960);
+    border-left: 1px solid var(--color-neutral-100);
+}
+
+.buttonAndLogo {
+    display: flex;
+    gap: convertToRem(16);
+}
