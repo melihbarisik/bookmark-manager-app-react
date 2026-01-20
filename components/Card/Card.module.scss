@@ -1,0 +1,86 @@
+@use '../../styles/abstracts' as *;
+@use '../../styles/base/typography' as *;
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: convertToRem(338);
+  height: convertToRem(272);
+  background-color: $color-neutral-0;
+  border-radius: $radius-lg;
+  padding: convertToRem(16);
+  overflow: hidden;
+}
+
+/* CONTENT (üst kısım) */
+.content {
+  flex: 1;                     // 🔥 alanı doldurur
+  display: flex;
+  flex-direction: column;
+  gap: convertToRem(12);
+  overflow: hidden;
+}
+
+/* HEADER */
+.header {
+  display: flex;
+  gap: convertToRem(16);
+}
+
+.headerText {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    font-size: $text-p2-size;
+    font-weight: $text-p2-weight;
+    line-height: $text-p2-lh;
+  }
+
+  .url {
+    font-size: $text-p5-size;
+    font-weight: $text-p5-weight;
+    line-height: $text-p5-lh;
+    color: $color-neutral-500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+/* DESCRIPTION */
+.description {
+  font-size: $text-p4-size;
+  line-height: $text-p4-lh;
+  color: $color-neutral-800;
+
+  overflow: hidden;
+}
+
+/* TAGS */
+.tagsContainer {
+  display: flex;
+  gap: convertToRem(8);
+  overflow: hidden;
+}
+
+/* FOOTER (alt kısım) */
+.footer {
+  display: flex;
+  align-items: center;
+  gap: convertToRem(12);
+  padding-top: convertToRem(12);
+  border-top: 1px solid $color-neutral-100;
+}
+
+.footerItem {
+  display: inline-flex;
+  align-items: center;
+  gap: convertToRem(6);
+
+  span {
+    font-size: $text-p5-size;
+    font-weight: $text-p5-weight;
+    line-height: $text-p5-lh;
+  }
+}

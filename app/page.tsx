@@ -1,12 +1,23 @@
 "use client"
 
+import Button from '@/components/Button/Botton';
+import styles from './page.module.scss'
+import SortIcon from '@/icons/SortIcon';
+import Bookmarks from '@/pages/bookMarks/bookMarks';
+
 export default function Home() {
   return (
-    <button onClick={() => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-    }}>
-      Temayı Değiştir
-    </button>
+    <div className={styles.homeWrapper}>
+      <div className={styles.headerContainer}>
+        <span className={styles.header}>All Bookmarks</span>
+        <Button className={styles.sortButton}
+          icon={
+            <SortIcon/>}>
+          Sort By</Button>
+      </div>
+      <div>
+        <Bookmarks></Bookmarks>
+      </div>
+    </div>
   );
 }
