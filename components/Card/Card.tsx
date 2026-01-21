@@ -18,10 +18,16 @@ export interface CardData {
 
 interface CardProps {
     data: Bookmark;
+    onClick: (card: Bookmark) => void
 }
 
 
-export default function Card({ data }: CardProps) {
+export default function Card({ data, onClick }: CardProps) {
+
+    const handlePinCard = (card: Bookmark) => {
+        onClick(card)
+    }
+
     return (
         <div className={styles.container}>
             {/* CONTENT */}
@@ -68,8 +74,8 @@ export default function Card({ data }: CardProps) {
                     </div>
                 </div>
 
-                <div className={styles.footerItem}>
-                    <Image src="/images/icon-pin.svg" alt="" width={12} height={12} />
+                <div className={styles.footerItem} onClick={() => handlePinCard(data)}>
+                    {data.pinned ? <Image src="/images/icon-pin.svg" alt="" width={12} height={12} /> : <Image src="/images/icon-unpin.svg" alt="" width={12} height={12} />}
                 </div>
             </div>
         </div>

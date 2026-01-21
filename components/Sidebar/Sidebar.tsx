@@ -7,12 +7,13 @@ import archiveIcon from '../../public/images/icon-archive.svg'
 import logoTheme from '../../public/images/logo-light-theme.svg'
 import Checkbox from '../Checkbox/Checkbox';
 import Badge from '../Badge/Badge';
+import { usePathname, useRouter } from 'next/navigation'
 
 const sideBarData = [
     { label: "AI", count: 1 },
     { label: "Community", count: 5 },
     { label: "Compatibility", count: 1 },
-    { label: "CSS", count: 6},
+    { label: "CSS", count: 6 },
     { label: "Design", count: 1 },
     { label: "Framework", count: 2 },
     { label: "Git", count: 1 },
@@ -30,11 +31,12 @@ const sideBarData = [
 
 
 const Sidebar: React.FC = () => {
+    const router = useRouter();
+    const pathname = usePathname();
 
     const handleCheckboxChange = () => {
-
+        
     }
-
     return <aside className={styles.sidebarContainer}>
         <div className={styles.logoContainer}>
             <Image
@@ -44,7 +46,7 @@ const Sidebar: React.FC = () => {
                 height={32} />
         </div>
         <div className={styles.contentContainer}>
-            <div className={styles.contentItem}>
+            <div className={`${styles.contentItem} ${pathname === '/' ? styles.active : ""}`} onClick={() => router.push("/")}>
                 <Image
                     src={homeIcon}
                     alt='icon-home'
@@ -52,7 +54,7 @@ const Sidebar: React.FC = () => {
                     height={24} />
                 <span>Home</span>
             </div>
-            <div className={styles.contentItem}>
+            <div className={`${styles.contentItem} ${pathname === '/archived' ? styles.active : ""}`} onClick={() => router.push("archived")}>
                 <Image
                     src={archiveIcon}
                     alt='icon-archive'

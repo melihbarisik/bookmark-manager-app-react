@@ -1,0 +1,28 @@
+@use '../../../styles/abstracts/' as *;
+@use '../../../styles/base/typography' as *;
+
+
+.homeWrapper {
+    display: flex;
+    flex-direction: column;
+    padding: convertToRem(32);
+    gap: convertToRem(24);
+}
+
+.header {
+    font-size: $text-p1-size;
+    font-weight: $text-p1-weight;
+    line-height: $text-p1-lh;
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sortButton {
+    width: convertToRem(107);
+    height: convertToRem(45);
+    background-color: $color-neutral-0;
+    color: black;
+}

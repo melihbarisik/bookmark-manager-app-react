@@ -28,7 +28,7 @@ export default function Home() {
           Sort By</Button>
       </div>
       <div>
-        <Bookmarks sort={sortType}></Bookmarks>
+        <Bookmarks sort={sortType} type='all' />
       </div>
       <button onClick={() => {
       const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

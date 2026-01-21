@@ -60,3 +60,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.active {
+    border-radius: $radius-2xl;
+        background-color: $color-neutral-100;
+}
