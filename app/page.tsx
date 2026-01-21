@@ -5,11 +5,12 @@ import styles from './page.module.scss'
 import SortIcon from '@/icons/SortIcon';
 import Bookmarks from '@/pages/bookMarks/bookMarks';
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 
 export default function Home() {
   const [sortType, setSortType] = useState<"asc" | "desc">("asc");
-
+  const products = useSelector((state: any) => state.products.items);
   const handleOnClick = () => {
     if (sortType === "asc") {
       setSortType("desc");
@@ -28,7 +29,7 @@ export default function Home() {
           Sort By</Button>
       </div>
       <div>
-        <Bookmarks sort={sortType} type='all' />
+        <Bookmarks sort={sortType} data={products}  />
       </div>
       <button onClick={() => {
       const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

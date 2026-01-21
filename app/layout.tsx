@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import '../styles/main.scss'
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Navbar from "@/components/Navbar/Navbar";
+import { Providers } from "@/store/provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -21,8 +22,10 @@ export default function RootLayout({
           <main style={{
             width: "100%"
           }}>
-             <Navbar />
-            {children}
+            <Navbar />
+            <Providers>
+              {children}
+            </Providers>
           </main>
         </div>
       </body>

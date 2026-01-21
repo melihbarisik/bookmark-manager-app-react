@@ -2,17 +2,20 @@ import { Bookmark, bookmarks } from '@/data';
 import styles from './bookMarks.module.scss'
 import Card from '@/components/Card/Card';
 import { useSearchParams } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
+import { togglePinned } from '@/store/productSlice';
+import { useDispatch } from 'react-redux';
 
 interface BookMarksProps {
     sort: "asc" | "desc";
-    type: "all" | "archived";
+    data: Bookmark[];
 }
 
-export default function Bookmarks({ sort, type }: BookMarksProps) {
+export default function Bookmarks({ sort, data }: BookMarksProps) {
     const searchParams = useSearchParams();
     const query = searchParams.get('q') || '';
-    const [data, setData] = useState(type === "archived" ? bookmarks.filter((item: Bookmark) => item.pinned === true) : bookmarks);
+    const dispatch = useDispatch();
+
 
     const filteredData = useMemo(() => {
         const q = query.toLowerCase();
@@ -20,21 +23,20 @@ export default function Bookmarks({ sort, type }: BookMarksProps) {
         return data
             .filter(item => item.title.toLowerCase().includes(q))
             .toSorted((a, b) => {
+                if (a.pinned !== b.pinned) {
+                    return a.pinned ? -1 : 1;
+                }
+
                 if (sort === "asc") {
                     return a.title.localeCompare(b.title);
+                } else {
+                    return b.title.localeCompare(a.title);
                 }
-                return b.title.localeCompare(a.title);
             });
     }, [query, sort, data]);
 
     const handlePinCard = (card: Bookmark) => {
-        setData((prev: Bookmark[]) =>
-            prev.map((item: Bookmark) =>
-                item.id === card.id
-                    ? { ...item, pinned: !item.pinned }
-                    : item
-            )
-        );
+        dispatch(togglePinned(card.id));
     };
 
     return <div className={styles.container}>
