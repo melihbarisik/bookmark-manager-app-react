@@ -11,8 +11,6 @@ export function formatShortDate(dateString?: string | null) {
     const day = date.getUTCDate()
     const month = MONTHS[date.getUTCMonth()]
 
-    console.log("`${day} ${month}`", `${day} ${month}`);
-
 
     return `${day} ${month}`
 }

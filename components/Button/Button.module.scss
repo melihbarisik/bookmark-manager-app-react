@@ -12,4 +12,12 @@
     border-radius: $radius-lg;
     color: $color-neutral-0;
     white-space: nowrap;    
+
+    transition: transform 0.1s ease, box-shadow 0.1s ease; // 🔥
+
+}
+
+.button:active {
+  transform: translateY(2px);     // 🔥 aşağı iner
+  box-shadow: 0 2px 0 $color-teal-800;
 }

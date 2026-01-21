@@ -4,13 +4,13 @@ import Search from '../Search/Search';
 import Button from '../Button/Botton';
 import AddIcon from '@/icons/AddIcon';
 import Avatar from '../Avatar/Avatar';
-import ImageAvatar from '../../public/images/image-avatar.webp'
+
 
 
 const Navbar: React.FC = () => {
   return (
     <nav className={styles.navbar}>
-      <div><Search></Search></div>
+      <div><Search /></div>
       <div className={styles.buttonAndLogo}>
         <div className={styles.addButton}>
           <Button
