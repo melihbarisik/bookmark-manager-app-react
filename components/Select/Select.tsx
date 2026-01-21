@@ -1,0 +1,74 @@
+'use client';
+
+import { useState, useRef, useEffect } from 'react';
+import styles from './Select.module.scss';
+import Image from 'next/image'
+
+export type Option = {
+    label: string;
+    value: string;
+};
+
+interface SelectProps {
+    label?: string;
+    options: Option[];
+    value: string;
+    onChange: (val: string) => void;
+    icon?: React.ReactNode;
+}
+
+export default function Select({ label, options, value, onChange, icon }: SelectProps) {
+    const [isOpen, setIsOpen] = useState(false);
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
+    // Seçim yapıldığında çalışacak fonksiyon
+    const handleSelect = (val: string) => {
+        onChange(val);
+        setIsOpen(false);
+    };
+
+    // Şu an seçili olan option'ı bul (Label'ı göstermek için gerekebilir)
+    const selectedOption = options.find((opt) => opt.value === value);
+
+    return (
+        <div className={styles.container} ref={containerRef}>
+            {/* Tetikleyici Buton */}
+            <button
+                className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
+                onClick={() => setIsOpen(!isOpen)}
+                type="button"
+            >
+                {icon && <span className={styles.icon}>{icon}</span>}
+                <span className={styles.label}>{label || selectedOption?.label}</span>
+            </button>
+
+            {/* Dropdown Menü */}
+            {isOpen && (
+                <div className={styles.dropdown}>
+                    <ul className={styles.list}>
+                        {options.map((option) => (
+                            <li
+                                key={option.value}
+                                className={`${styles.item} ${value === option.value ? styles.selected : ''}`}
+                                onClick={() => handleSelect(option.value)}
+                            >
+                                <span>{option.label}</span>
+                                {value === option.value && <Image src="/images/icon-check.svg" alt='check-icon' width={16} height={16}></Image>}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
+        </div>
+    );
+}

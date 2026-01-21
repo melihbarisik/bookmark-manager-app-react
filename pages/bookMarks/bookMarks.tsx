@@ -5,9 +5,10 @@ import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
 import { togglePinned } from '@/store/productSlice';
 import { useDispatch } from 'react-redux';
+import { compareItems } from '@/utils/sort';
 
 interface BookMarksProps {
-    sort: "asc" | "desc";
+    sort: string;
     data: Bookmark[];
 }
 
@@ -23,15 +24,7 @@ export default function Bookmarks({ sort, data }: BookMarksProps) {
         return data
             .filter(item => item.title.toLowerCase().includes(q))
             .toSorted((a, b) => {
-                if (a.pinned !== b.pinned) {
-                    return a.pinned ? -1 : 1;
-                }
-
-                if (sort === "asc") {
-                    return a.title.localeCompare(b.title);
-                } else {
-                    return b.title.localeCompare(a.title);
-                }
+                return compareItems(a,b, sort)
             });
     }, [query, sort, data]);
 

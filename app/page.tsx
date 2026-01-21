@@ -1,42 +1,52 @@
 "use client"
 
-import Button from '@/components/Button/Botton';
+
 import styles from './page.module.scss'
-import SortIcon from '@/icons/SortIcon';
 import Bookmarks from '@/pages/bookMarks/bookMarks';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import Select from '../components/Select/Select';
+import Image from 'next/image';
+import { options } from '@/mocks/types';
+
+
 
 
 export default function Home() {
-  const [sortType, setSortType] = useState<"asc" | "desc">("asc");
+  const [sortValue, setSortValue] = useState("");
   const products = useSelector((state: any) => state.products.items);
-  const handleOnClick = () => {
-    if (sortType === "asc") {
-      setSortType("desc");
-    } else {
-      setSortType("asc");
-    }
+  const handleOnClick = (val: string) => {
+    setSortValue(val);
   }
 
   return (
     <div className={styles.homeWrapper}>
       <div className={styles.headerContainer}>
         <span className={styles.header}>All Bookmarks</span>
-        <Button className={styles.sortButton} onClick={() => handleOnClick()}
+        <Select
+          label='Sort By'
+          options={options}
+          value={sortValue}
+          onChange={(val) => handleOnClick(val)}
           icon={
-            <SortIcon />}>
-          Sort By</Button>
+            <Image
+              src="/images/icon-sort.svg"
+              alt='search-icon'
+              width={20}
+              height={20}
+            />
+          }
+        />
       </div>
       <div>
-        <Bookmarks sort={sortType} data={products}  />
+        <Bookmarks sort={sortValue} data={products} />
       </div>
       <button onClick={() => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
-    }}>
-      Temayı Değiştir
-    </button>
+        const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      }}>
+        Temayı Değiştir
+      </button>
     </div>
   );
 }
