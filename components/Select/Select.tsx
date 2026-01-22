@@ -3,6 +3,7 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Select.module.scss';
 import Image from 'next/image'
+import Divider from '../Divider/Divider';
 
 export type Option = {
     label: string;
