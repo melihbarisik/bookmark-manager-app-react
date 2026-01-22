@@ -68,16 +68,9 @@
 .footer {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: convertToRem(12);
   padding-top: convertToRem(12);
   border-top: 1px solid $color-neutral-100;
-}
-
-.footerLeft {
-  display: flex;
-  align-items: center;
-  gap: convertToRem(12);
 }
 
 .footerItem {
