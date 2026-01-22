@@ -3,7 +3,7 @@ import styles from './Checkbox.module.scss'
 
 interface CheckboxProps {
     label: string;
-    onChange(): () => void;
+    onChange: (label:string) => void;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
@@ -11,16 +11,12 @@ const Checkbox: React.FC<CheckboxProps> = ({
     onChange
 }) => {
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange();
-    };
-
     return (
         <label className={styles.checkboxContainer}>
             <input
                 type="checkbox"
                 className={styles.hiddenCheckbox}
-                onChange={handleChange}
+                onChange={() => onChange(label)}
             />
 
             <span className={styles.customCheckbox} />

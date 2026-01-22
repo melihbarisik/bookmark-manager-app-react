@@ -3,7 +3,7 @@ import styles from './bookMarks.module.scss'
 import Card from '@/components/Card/Card';
 import { useSearchParams } from 'next/navigation';
 import { useMemo } from 'react';
-import { togglePinned } from '@/store/productSlice';
+import { togglePinned } from '@/store/slices/productSlice';
 import { useDispatch } from 'react-redux';
 import { compareItems } from '@/utils/sort';
 

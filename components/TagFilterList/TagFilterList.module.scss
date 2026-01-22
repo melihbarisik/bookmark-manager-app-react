@@ -1,0 +1,7 @@
+@use '../../styles/abstracts' as *;
+
+
+.items {
+    display: flex;
+    justify-content: space-between;
+}

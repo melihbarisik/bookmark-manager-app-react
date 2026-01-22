@@ -17,17 +17,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div style={{ display: "flex" }}>
-          <Sidebar />
-          <main style={{
-            width: "100%"
-          }}>
-            <Navbar />
-            <Providers>
+        <Providers>
+          <div style={{ display: "flex" }}>
+            <Sidebar />
+            <main style={{
+              width: "100%"
+            }}>
+              <Navbar />
+
               {children}
-            </Providers>
-          </main>
-        </div>
+
+            </main>
+          </div>
+        </Providers>
       </body>
     </html>
   );

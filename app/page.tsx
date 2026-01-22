@@ -8,13 +8,14 @@ import { useSelector } from 'react-redux';
 import Select from '../components/Select/Select';
 import Image from 'next/image';
 import { options } from '@/mocks/types';
+import { selectFilteredCards } from '@/store/slices/selectors/filteredCardSelectors';
 
 
 
 
 export default function Home() {
   const [sortValue, setSortValue] = useState("");
-  const products = useSelector((state: any) => state.products.items);
+  const cards = useSelector(selectFilteredCards);
   const handleOnClick = (val: string) => {
     setSortValue(val);
   }
@@ -39,7 +40,7 @@ export default function Home() {
         />
       </div>
       <div>
-        <Bookmarks sort={sortValue} data={products} />
+        <Bookmarks sort={sortValue} data={cards} />
       </div>
     </div>
   );

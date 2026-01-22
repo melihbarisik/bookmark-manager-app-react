@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer from './productSlice';
+import productReducer from './slices/productSlice';
+import tagFilterReducer from './slices/tagFilterSlice'
 
 export const store = configureStore({
   reducer: {
     products: productReducer,
-    // Yarın öbür gün userSlice gelirse buraya ekleyeceksin
+    tagFilter: tagFilterReducer,
+   
   },
 });
 
