@@ -18,7 +18,6 @@
   display: flex;
   flex-direction: column;
   gap: convertToRem(12);
-  overflow: hidden;
 }
 
 /* HEADER */
@@ -30,6 +29,7 @@
 .headerText {
   display: flex;
   flex-direction: column;
+  flex:1;
 
   .title {
     font-size: $text-p2-size;
@@ -90,4 +90,9 @@
     font-weight: $text-p5-weight;
     line-height: $text-p5-lh;
   }
+}
+
+.cardSelect {
+  width: 32px;
+  height: 32px;
 }

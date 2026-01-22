@@ -8,11 +8,10 @@ import { useDispatch } from 'react-redux';
 import { compareItems } from '@/utils/sort';
 
 interface BookMarksProps {
-    sort: string;
     data: Bookmark[];
 }
 
-export default function Bookmarks({ sort, data }: BookMarksProps) {
+export default function Bookmarks({ data }: BookMarksProps) {
     const searchParams = useSearchParams();
     const query = searchParams.get('q') || '';
     const dispatch = useDispatch();
@@ -23,10 +22,7 @@ export default function Bookmarks({ sort, data }: BookMarksProps) {
 
         return data
             .filter(item => item.title.toLowerCase().includes(q))
-            .toSorted((a, b) => {
-                return compareItems(a,b, sort)
-            });
-    }, [query, sort, data]);
+    }, [query, data]);
 
     const handlePinCard = (card: Bookmark) => {
         dispatch(togglePinned(card.id));

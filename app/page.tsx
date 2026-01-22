@@ -4,20 +4,22 @@
 import styles from './page.module.scss'
 import Bookmarks from '@/pages/bookMarks/bookMarks';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from '../components/Select/Select';
 import Image from 'next/image';
 import { options } from '@/mocks/types';
 import { selectFilteredCards } from '@/store/slices/selectors/filteredCardSelectors';
+import { setSortBy } from '@/store/slices/productSlice';
 
 
 
 
 export default function Home() {
-  const [sortValue, setSortValue] = useState("");
+  const [sortValue] = useState("");
+  const dispatch = useDispatch();
   const cards = useSelector(selectFilteredCards);
   const handleOnClick = (val: string) => {
-    setSortValue(val);
+    dispatch(setSortBy(val))
   }
 
   return (
@@ -40,7 +42,7 @@ export default function Home() {
         />
       </div>
       <div>
-        <Bookmarks sort={sortValue} data={cards} />
+        <Bookmarks data={cards} />
       </div>
     </div>
   );

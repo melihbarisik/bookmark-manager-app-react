@@ -3,11 +3,11 @@
 import { useState, useRef, useEffect } from 'react';
 import styles from './Select.module.scss';
 import Image from 'next/image'
-import Divider from '../Divider/Divider';
 
 export type Option = {
     label: string;
     value: string;
+    url?: string;
 };
 
 interface SelectProps {
@@ -16,11 +16,13 @@ interface SelectProps {
     value: string;
     onChange: (val: string) => void;
     icon?: React.ReactNode;
+    className?: string;
 }
 
 export default function Select({ label, options, value, onChange, icon }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
+    const isIconOnly = !label && icon;
 
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
@@ -45,12 +47,12 @@ export default function Select({ label, options, value, onChange, icon }: Select
         <div className={styles.container} ref={containerRef}>
             {/* Tetikleyici Buton */}
             <button
-                className={`${styles.trigger} ${isOpen ? styles.open : ''}`}
+                className={`${styles.trigger} ${isOpen ? styles.open : ''} ${isIconOnly ? styles.iconOnly : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
             >
                 {icon && <span className={styles.icon}>{icon}</span>}
-                <span className={styles.label}>{label || selectedOption?.label}</span>
+                {label && <span className={styles.label}>{label || selectedOption?.label}</span>}
             </button>
 
             {/* Dropdown Menü */}
@@ -63,7 +65,7 @@ export default function Select({ label, options, value, onChange, icon }: Select
                                 className={`${styles.item} ${value === option.value ? styles.selected : ''}`}
                                 onClick={() => handleSelect(option.value)}
                             >
-                                <span>{option.label}</span>
+                                <span className={styles.optionWithImage}>{option.url && <Image src={option.url} alt='option-url' width={16} height={16}/>}{option.label}</span>
                                 {value === option.value && <Image src="/images/icon-check.svg" alt='check-icon' width={16} height={16}></Image>}
                             </li>
                         ))}

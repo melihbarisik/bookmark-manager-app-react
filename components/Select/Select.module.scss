@@ -31,6 +31,19 @@
     border-color: #002d2d; // Aktif renk
     box-shadow: 0 0 0 2px rgba(0, 45, 45, 0.1);
   }
+
+  &.iconOnly {
+    padding: 0; 
+    aspect-ratio: 1 / 1; // Kare kalmasını garanti eder
+    justify-content: center; // İçeriği tam ortala
+    width: 32px;
+    
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 }
 
 .dropdown {
@@ -88,4 +101,10 @@
 .label {
   font-size: $text-p3-size;
   line-height: $text-p3-lh;
+}
+
+.optionWithImage {
+  display: flex;
+  align-items: center;
+  gap:  convertToRem(8)
 }

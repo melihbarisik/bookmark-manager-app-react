@@ -4,7 +4,8 @@ import { createSlice } from '@reduxjs/toolkit';
 const productSlice = createSlice({
   name: 'products',
   initialState: {
-    items: bookmarks
+    items: bookmarks,
+    sortBy: 'radded'
   },
   reducers: {
     togglePinned: (state, action) => {
@@ -12,12 +13,12 @@ const productSlice = createSlice({
       if (product) {
         product.pinned = !product.pinned;
       }
-      state.items.sort((a, b) => {
-        return Number(b.pinned) - Number(a.pinned);
-      });
+    },
+    setSortBy: (state, action) => {
+      state.sortBy = action.payload;
     },
   },
 });
 
-export const { togglePinned } = productSlice.actions;
+export const { togglePinned, setSortBy } = productSlice.actions;
 export default productSlice.reducer;

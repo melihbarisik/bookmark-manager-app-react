@@ -1,9 +1,10 @@
 import { Bookmark } from '@/data';
 import styles from './Card.module.scss'
 import Image from 'next/image';
-import Divider from '../Divider/Divider';
 import Badge from '../Badge/Badge';
 import { formatShortDate } from '@/utils/formatDate';
+import Select from '../Select/Select';
+import { CardOptions } from '@/mocks/cardOptions';
 
 export interface CardData {
     favicon: React.ReactNode;
@@ -28,6 +29,12 @@ export default function Card({ data, onClick }: CardProps) {
         onClick(card)
     }
 
+    const handleCardOptions = (val: any) => {
+        if (val === "pin") {
+            handlePinCard(data)
+        }
+    }
+
     return (
         <div className={styles.container}>
             {/* CONTENT */}
@@ -43,6 +50,21 @@ export default function Card({ data, onClick }: CardProps) {
                     <div className={styles.headerText}>
                         <span className={styles.title}>{data.title}</span>
                         <span className={styles.url}>{data.url}</span>
+                    </div>
+                    <div>
+                        <Select
+                            icon={
+                                <Image
+                                    src="/images/icon-menu-bookmark.svg"
+                                    alt="menu-bookmark"
+                                    width={20}
+                                    height={20}
+                                />
+                            }
+                            options={CardOptions}
+                            onChange={handleCardOptions}
+                            value=""
+                        />
                     </div>
                 </div>
 
