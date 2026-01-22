@@ -3,6 +3,7 @@ import '../styles/main.scss'
 import Sidebar from "@/components/Sidebar/Sidebar";
 import Navbar from "@/components/Navbar/Navbar";
 import { Providers } from "@/store/provider";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,7 +25,7 @@ export default function RootLayout({
               width: "100%"
             }}>
               <Navbar />
-
+              <Toaster position="top-right" richColors />
               {children}
 
             </main>

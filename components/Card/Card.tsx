@@ -5,6 +5,7 @@ import Badge from '../Badge/Badge';
 import { formatShortDate } from '@/utils/formatDate';
 import Select from '../Select/Select';
 import { CardOptions } from '@/mocks/cardOptions';
+import { toast } from 'sonner';
 
 export interface CardData {
     favicon: React.ReactNode;
@@ -32,6 +33,18 @@ export default function Card({ data, onClick }: CardProps) {
     const handleCardOptions = (val: any) => {
         if (val === "pin") {
             handlePinCard(data)
+        } else if (val === "copy") {
+            if (data.url) {
+                navigator.clipboard.writeText(data.url)
+                    .then(() => {
+                        toast.message("✔️ Link kopyalandı", {
+                            description: "URL panoya başarıyla eklendi."
+                        });
+                    })
+                    .catch((err) => {
+                        console.error("Kopyalama sırasında hata oluştu: ", err);
+                    });
+            }
         }
     }
 
