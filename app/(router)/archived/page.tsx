@@ -38,12 +38,6 @@ export default function Archived() {
             <div>
                 <Bookmarks sort={sortValue} data={products} />
             </div>
-            <button onClick={() => {
-                const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', theme);
-            }}>
-                Temayı Değiştir
-            </button>
         </div>
     );
 }

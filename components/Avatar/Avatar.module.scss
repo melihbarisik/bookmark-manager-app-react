@@ -1,18 +1,100 @@
+@use '../../styles/abstracts' as *;
+@use '../../styles/base/typography' as *;
+
 .avatar {
+  position: relative;
   border-radius: 50%;
-  overflow: hidden;
+  // overflow: hidden;  <-- BU SATIRI SİLMELİSİNİZ
   background-color: #e5e7eb;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer; // Tıklanabilir olduğunu belli etmek için
 
   img {
     object-fit: cover;
+    border-radius: 50%; // Resmin yuvarlak kalması için buraya ekleyin
   }
 }
 
-.fallback {
+// Dropdown'ın içinde olduğu kapsayıcıdan taşabilmesi için:
+.dropdown {
+  position: absolute;
+  top: calc(100% + 16px); 
+  right: 0;
+  z-index: 999; // Diğer elemanların üstünde olduğundan emin olun
+  width: convertToRem(248);
+  height: convertToRem(171);
+  background-color: $color-neutral-0;
+  border-radius: $radius-md ;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 1px solid $color-neutral-100;
+
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+  gap: convertToRem(12);
+  padding: convertToRem(12) convertToRem(16);
+}
+
+.nameEmail {
+  display: flex;
+  flex-direction: column;
+}
+
+.nameInfo {
+  font-size: $text-p4-size;
+  font-weight: $text-p4-weight;
+  line-height: $text-p4-lh;
+}
+
+.mailInfo {
+  font-size: $text-p4-size;
+  font-weight: $text-p4-weight;;
+  color: $color-neutral-800;
+}
+
+.themeContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; // İki ana grubu uçlara iter
+  padding: 12px 16px;            // İçeriden ferahlık sağlar
+  width: 100%;      
+  height: 54px;             // Konteynırı tam kaplar
+}
+
+.labelGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;                     // İkon ile "Theme" yazısı arasındaki boşluk
+  color: #344054;                // Figma'daki genel metin rengi
   font-size: 14px;
-  font-weight: 600;
-  color: #6b7280;
+  font-weight: 500;
+
+  span {
+    line-height: 1;              // Metnin ikonla tam ortalanması için
+  }
+}
+
+.togglePlaceholder {
+  // Toggle düğmesi geldiğinde burası onu sarmalayacak
+  color: #667085;
+  font-size: 12px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  padding: convertToRem(12) convertToRem(16);
+  gap: convertToRem(10)
+}
+
+.footerSpan {
+    font-size: $text-p4-size;
+    font-weight: $text-p5-weight;
+    color: $color-neutral-800;
 }
