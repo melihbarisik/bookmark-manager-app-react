@@ -4,20 +4,38 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $color-teal-700;
-    width: convertToRem(169);
-    height: convertToRem(46);
-    gap: convertToRem(4);
-    padding: convertToRem(12) convertToRem(16);
+    gap: convertToRem(8); // İkon ve metin arası boşluk
     border-radius: $radius-lg;
-    color: $color-neutral-0;
-    white-space: nowrap;    
-
-    transition: transform 0.1s ease, box-shadow 0.1s ease; // 🔥
-
+    white-space: nowrap; // Metnin alt satıra geçmesini engeller
+    cursor: pointer;
+    font-weight: 600;
+    height: convertToRem(46);
+    border: none;
+    transition: all 0.2s ease;
+    box-sizing: border-box; // Padding'in genişliğe dahil olmasını sağlar
+    overflow: hidden; // Taşan kısımları gizler
 }
 
-.button:active {
-  transform: translateY(2px);     // 🔥 aşağı iner
-  box-shadow: 0 2px 0 $color-teal-800;
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; // İkonun sıkışmasını engeller
+    
+    // İkonun boyutu metne göre çok büyükse buradan sınırlayabilirsin
+    svg, img {
+        width: convertToRem(20); 
+        height: convertToRem(20);
+    }
+}
+
+.primary {
+    background-color: $color-teal-700;
+    color: $color-neutral-0;
+    width: convertToRem(169); // Sabit genişlik
+    padding: 0 convertToRem(12); // İçerik sığmıyorsa yatay padding'i azaltıyoruz
+
+    &:hover {
+        background-color: $color-teal-800;
+    }
 }

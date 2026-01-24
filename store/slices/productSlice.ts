@@ -8,17 +8,26 @@ const productSlice = createSlice({
     sortBy: 'radded'
   },
   reducers: {
+    toggleArchive: (state, action) => {
+      const card = state.items.find(p => p.id === action.payload);
+      if (card) {
+        card.isArchived = !card.isArchived;
+      }
+    },
     togglePinned: (state, action) => {
-      const product = state.items.find(p => p.id === action.payload);
-      if (product) {
-        product.pinned = !product.pinned;
+      const card = state.items.find(p => p.id === action.payload);
+      if (card) {
+        card.pinned = !card.pinned;
       }
     },
     setSortBy: (state, action) => {
       state.sortBy = action.payload;
     },
+    deleteById: (state, action) => {
+      state.items = state.items.filter((p) => p.id !== action.payload)
+    }
   },
 });
 
-export const { togglePinned, setSortBy } = productSlice.actions;
+export const { togglePinned, setSortBy, toggleArchive, deleteById } = productSlice.actions;
 export default productSlice.reducer;

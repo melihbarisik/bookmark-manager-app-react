@@ -1,0 +1,95 @@
+@use '../../styles/abstracts' as *;
+@use '../../styles/base/typography' as *;
+
+.modalContainer {
+  // Figma Değerleri
+  width: convertToRem(450); 
+  background-color: $color-neutral-0;
+  padding: convertToRem(24); // Figma'da 24px görünüyor
+  border-radius: convertToRem(12); // Figma'da Appearance kısmında 12px
+  position: relative; // X butonu için
+  
+  // Layout
+  display: flex;
+  flex-direction: column;
+  
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+  .closeIcon {
+    position: absolute;
+    top: convertToRem(16);
+    right: convertToRem(16);
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: $color-neutral-900;
+  }
+}
+
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  gap: convertToRem(8); // Title ve Desc arası boşluk
+  padding-right: convertToRem(32); // X butonuna çarpmaması için
+
+  .title {
+    font-size: $text-p1-size; // Figma'daki "Archive bookmark" stili
+    font-weight: 700;
+    color: $color-neutral-900;
+    margin: 0;
+  }
+
+  .description {
+    font-size: $text-p4-size;
+    color: $color-neutral-800;
+    margin: 0;
+  }
+}
+
+
+
+.modalFooter {
+    display: flex;
+    justify-content: flex-end; // Sağ yaslama burada
+    gap: convertToRem(12);
+    margin-top: convertToRem(24);
+    width: 100%;
+
+    // Ortak Boyut Ayarı (Figma: 90x46)
+    .footerBtn {
+        width: convertToRem(90); // Dışarıdan gelen genişliği zorla uygula
+        height: convertToRem(46);
+        padding: 0; // Sabit genişlik varken padding sıfırlanabilir veya düşük tutulur
+    }
+
+    .cancelBtn {
+        background-color: transparent;
+        border: 1px solid $color-neutral-300;
+        color: $color-neutral-900;
+        
+        
+        &:hover {
+            background-color: $color-neutral-100;
+        }
+    }
+
+    .confirmBtn {
+        background-color: #1f4d4a; // Figma'daki koyu renk
+        color: $color-neutral-0;
+
+        &:hover {
+            filter: brightness(1.2);
+        }
+    }
+
+    .deleteBtn {
+        background-color: $color-red-800;
+        color: $color-neutral-0;
+        width: convertToRem(181);
+
+        &:hover {
+            filter: brightness(1.1);
+        }
+    }
+}

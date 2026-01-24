@@ -4,6 +4,7 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import Navbar from "@/components/Navbar/Navbar";
 import { Providers } from "@/store/provider";
 import { Toaster } from "sonner";
+import { ModalManager } from "@/modals/ModalManager";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -25,6 +26,7 @@ export default function RootLayout({
               width: "100%"
             }}>
               <Navbar />
+              <ModalManager />
               <Toaster position="top-right" richColors />
               {children}
 

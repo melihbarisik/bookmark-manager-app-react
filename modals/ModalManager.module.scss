@@ -1,0 +1,21 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(2pxx);
+  
+ 
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

@@ -30,7 +30,7 @@ export default function Bookmarks({ data }: BookMarksProps) {
 
     return <div className={styles.container}>
         {filteredData.map((bookmark, index) => (
-            <Card key={index} data={bookmark} onClick={(card) => handlePinCard(card)}></Card>
+            <Card key={index} data={bookmark}></Card>
         ))}
     </div>;
 }

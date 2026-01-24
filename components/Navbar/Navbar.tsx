@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
       <div><Search /></div>
       <div className={styles.buttonAndLogo}>
         <div className={styles.addButton}>
-          <Button
+          <Button variant='primary'
             icon={
               <AddIcon className={styles.icon} />}>
             Add Bookmark</Button>

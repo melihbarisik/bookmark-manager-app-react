@@ -4,8 +4,10 @@ import Image from 'next/image';
 import Badge from '../Badge/Badge';
 import { formatShortDate } from '@/utils/formatDate';
 import Select from '../Select/Select';
-import { CardOptions } from '@/mocks/cardOptions';
 import { toast } from 'sonner';
+import { useAppDispatch } from '@/store/hooks';
+import { openModal } from '@/store/slices/modelSlice';
+import { getCardOptions } from '@/mocks/cardOptions';
 
 export interface CardData {
     favicon: React.ReactNode;
@@ -20,19 +22,23 @@ export interface CardData {
 
 interface CardProps {
     data: Bookmark;
-    onClick: (card: Bookmark) => void
 }
 
 
-export default function Card({ data, onClick }: CardProps) {
+export default function Card({ data }: CardProps) {
+    const dispatch = useAppDispatch();
 
-    const handlePinCard = (card: Bookmark) => {
-        onClick(card)
-    }
 
     const handleCardOptions = (val: any) => {
         if (val === "pin") {
-            handlePinCard(data)
+            dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'pin',
+                    title: data.title
+                }
+            }))
         } else if (val === "copy") {
             if (data.url) {
                 navigator.clipboard.writeText(data.url)
@@ -45,6 +51,52 @@ export default function Card({ data, onClick }: CardProps) {
                         console.error("Kopyalama sırasında hata oluştu: ", err);
                     });
             }
+
+        } else if (val === "archive") {
+            dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'archive',
+                    title: data.title
+                }
+            }))
+        } else if (val === "unarchive") {
+            dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'unarchive',
+                    title: data.title
+                }
+            }))
+        } else if (val === "delete") {
+            dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'delete',
+                    title: data.title
+                }
+            }))
+        } else if (val === "pin") {
+             dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'pin',
+                    title: data.title
+                }
+            }))
+        } else if (val === "unpin") {
+             dispatch(openModal({
+                type: 'CONFIRM_ACTION',
+                data: {
+                    id: data.id,
+                    mode: 'unpin',
+                    title: data.title
+                }
+            }))
         }
     }
 
@@ -74,7 +126,7 @@ export default function Card({ data, onClick }: CardProps) {
                                     height={20}
                                 />
                             }
-                            options={CardOptions}
+                            options={getCardOptions(data)}
                             onChange={handleCardOptions}
                             value=""
                         />
@@ -109,8 +161,9 @@ export default function Card({ data, onClick }: CardProps) {
                     </div>
                 </div>
 
-                <div className={styles.footerItem} onClick={() => handlePinCard(data)}>
-                    {data.pinned ? <Image src="/images/icon-pin.svg" alt="" width={12} height={12} /> : <Image src="/images/icon-unpin.svg" alt="" width={12} height={12} />}
+                <div>
+                    {data.isArchived ? <Badge text="Archived"></Badge> : 
+                    data.pinned ? <Image src="/images/icon-pin.svg" alt="" width={12} height={12} /> : <Image src="/images/icon-unpin.svg" alt="" width={12} height={12} />}
                 </div>
             </div>
         </div>

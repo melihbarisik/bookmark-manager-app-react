@@ -5,26 +5,30 @@ interface ButtonProps {
     children: React.ReactNode;
     icon?: React.ReactNode;
     className?: string;
-    onClick?: () => void
+    onClick?: () => void,
+    variant?: 'primary' | 'outline' | 'danger' | 'ghost' | '';
 }
 
 const Button: React.FC<ButtonProps> = ({
     icon,
     children,
     className,
-    onClick
+    onClick,
+    variant = ''
 }) => {
-
+    const variantClass = styles[variant] || '';
     return (
         <button
             type="button"
             onClick={onClick}
-            className={`${styles.button}  ${className ?? ''}`}
+            className={`${styles.button} ${variantClass} ${className ?? ''}`}
         >
+            {/* İkonu sarmalayan span styles.icon alarak flex-shrink: 0 olacak */}
             {icon && <span className={styles.icon}>{icon}</span>}
-            {children}
+            <span className={styles.label}>{children}</span>
         </button>
     );
 };
+
 
 export default Button;
