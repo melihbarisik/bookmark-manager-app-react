@@ -3,23 +3,15 @@
 import styles from "./Search.module.scss"
 import searchIcon from "../../public/images/icon-search.svg"
 import Image from 'next/image';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useDispatch } from "react-redux";
+import { setSearchQuery } from "@/store/slices/productSlice";
 
 
 const Search = () => {
-    const router = useRouter();
-    const searchParams = useSearchParams();
-
+    const dispatch = useDispatch();
     const handleSearch = (value: string) => {
-        const params = new URLSearchParams(searchParams);
-        if (value) {
-            params.set('q', value);
-        } else {
-            params.delete('q');
-        }
-        router.push(`/?${params.toString()}`);
+       dispatch(setSearchQuery(value));
     };
-
 
     return <div className={styles.searchWrapper}>
         <span className={styles.searchIcon}>
@@ -31,7 +23,7 @@ const Search = () => {
         </span>
         <input
             type="search"
-            defaultValue={searchParams.get('q') || ''}
+            defaultValue={""}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Search by title..." />
     </div>;

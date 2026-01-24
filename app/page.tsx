@@ -8,8 +8,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Select from '../components/Select/Select';
 import Image from 'next/image';
 import { options } from '@/mocks/types';
-import { selectFilteredCards } from '@/store/slices/selectors/filteredCardSelectors';
 import { setSortBy } from '@/store/slices/productSlice';
+import { selectActiveBookmarks } from '@/store/slices/selectors/selectActiveBookmarks';
 
 
 
@@ -17,7 +17,7 @@ import { setSortBy } from '@/store/slices/productSlice';
 export default function Home() {
   const [sortValue] = useState("");
   const dispatch = useDispatch();
-  const cards = useSelector(selectFilteredCards);
+  const cards = useSelector(selectActiveBookmarks);
   const handleOnClick = (val: string) => {
     dispatch(setSortBy(val))
   }

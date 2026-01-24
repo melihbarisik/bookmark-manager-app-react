@@ -3,18 +3,21 @@
 import Bookmarks from '@/pages/bookMarks/bookMarks';
 import { useState } from 'react';
 import styles from './Archived.module.scss'
-import { useSelector } from 'react-redux';
-import { Bookmark } from '@/data';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from '@/components/Select/Select';
 import { options } from '@/mocks/types';
 import Image from 'next/image';
+import { setSortBy } from '@/store/slices/productSlice';
+import { selectArchivedBookmarks } from '@/store/slices/selectors/selectArchivedBookmarks';
 
 export default function Archived() {
     const [sortValue, setSortValue] = useState("");
-    const products = useSelector((state: any) => state.products.items.filter((item: Bookmark) => item.isArchived === true));
+    const dispatch = useDispatch();
+    const products = useSelector((selectArchivedBookmarks));
 
     const handleOnClick = (val: string) => {
-        setSortValue(val);
+        dispatch(setSortBy(val))
+        setSortValue(val)
     }
     return (
         <div className={styles.homeWrapper}>
@@ -36,7 +39,7 @@ export default function Archived() {
                 />
             </div>
             <div>
-                <Bookmarks sort={sortValue} data={products} />
+                <Bookmarks data={products} />
             </div>
         </div>
     );
