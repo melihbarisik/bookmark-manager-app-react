@@ -13,3 +13,16 @@
     display: flex;
     gap: convertToRem(16);
 }
+
+.navbarButtonSearch {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .navbarOpen {
+        border: 1px solid $color-neutral-300;
+        padding: 12px;
+        border-radius: $radius-lg;
+        cursor: pointer;
+    }
+}

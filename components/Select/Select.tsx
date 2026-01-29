@@ -19,7 +19,7 @@ interface SelectProps {
     className?: string;
 }
 
-export default function Select({ label, options, value, onChange, icon }: SelectProps) {
+export default function Select({ label, options, value, onChange, icon, className }: SelectProps) {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const isIconOnly = !label && icon;
@@ -44,14 +44,17 @@ export default function Select({ label, options, value, onChange, icon }: Select
     const selectedOption = options.find((opt) => opt.value === value);
 
     return (
-        <div className={styles.container} ref={containerRef}>
+        <div
+            ref={containerRef}
+            className={styles.container}
+        >
             {/* Tetikleyici Buton */}
             <button
                 className={`${styles.trigger} ${isOpen ? styles.open : ''} ${isIconOnly ? styles.iconOnly : ''}`}
                 onClick={() => setIsOpen(!isOpen)}
                 type="button"
             >
-                {icon && <span className={styles.icon}>{icon}</span>}
+                {icon && <span className={`${styles.icon} ${className ?? ""} `}>{icon}</span>}
                 {label && <span className={styles.label}>{label || selectedOption?.label}</span>}
             </button>
 
@@ -65,7 +68,7 @@ export default function Select({ label, options, value, onChange, icon }: Select
                                 className={`${styles.item} ${value === option.value ? styles.selected : ''}`}
                                 onClick={() => handleSelect(option.value)}
                             >
-                                <span className={styles.optionWithImage}>{option.url && <Image src={option.url} alt='option-url' width={16} height={16}/>}{option.label}</span>
+                                <span className={styles.optionWithImage}>{option.url && <Image src={option.url} alt='option-url' width={16} height={16} />}{option.label}</span>
                                 {value === option.value && <Image src="/images/icon-check.svg" alt='check-icon' width={16} height={16}></Image>}
                             </li>
                         ))}

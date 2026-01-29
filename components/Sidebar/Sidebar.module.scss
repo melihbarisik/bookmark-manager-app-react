@@ -1,16 +1,60 @@
 @use '../../styles/abstracts' as *;
 
+// --- OVERLAY (Karartma ve Blur Paneli) ---
+.overlay {
+    display: none; // Masaüstünde tamamen gizli
 
+    @media screen and (max-width: 768) { // Tablet ve telefon boyutu
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(4px); // Arka planı bulanıklaştırır
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        
+
+        &.showOverlay {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
 
 .sidebarContainer {
     display: flex;
     flex-direction: column;
     gap: convertToRem(20);
     width: convertToRem(296);
-    height: convertToRem(960);
+    height: 960px; // Sabit 960px yerine ekranı kaplaması daha sağlıklı
+    overflow-y: auto;
     background-color: $color-neutral-0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+
+    // --- MOBİL AYARLARI ---
+    @media screen and (max-width: 768) {
+        position: fixed; // Sayfanın üzerine binmesini sağlar
+        top: 0;
+        left: 0;
+        z-index: 9999; // Overlay'in üstünde olmalı
+        transform: translateX(-100%); // Başlangıçta ekranın solunda gizli
+        height: 100vh;
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.1);
+    }
+
+    // JS ile eklenen class
+    &.sidebarOpen {
+        transform: translateX(0);
+    }
 }
 
+// Mevcut diğer stillerin (Logo, Content, Tags vb.) aynen kalabilir
 .logoContainer {
     padding: convertToRem(20);
     height: convertToRem(62);
@@ -21,7 +65,6 @@
     display: flex;
     flex-direction: column;
     padding: 0 convertToRem(16);
-   
 }
 
 .contentItem {
@@ -36,28 +79,23 @@
         border-radius: $radius-2xl;
         background-color: $color-neutral-100;
     }
-
-   
-    
 }
 
 .tags {
     display: flex;
     flex-direction: column;
-    // Figma'daki değerlere göre (Üst 12, Sağ-Sol 12, Alt 4)
     padding: convertToRem(12) convertToRem(12) convertToRem(4) convertToRem(12);
     
     .tagsHeader { 
-        font-size: $text-xs; // Yaklaşık 12px (1.2rem)
-        color: $color-neutral-500; // Daha gri/silik bir renk
-        font-weight: 600; // Bold yerine Semi-bold daha temiz durur
-        letter-spacing: 0.05em; // Harf arasını biraz açmak profesyonel gösterir
-        text-transform: uppercase; // Her zaman büyük harf kalması için
+        font-size: $text-xs;
+        color: $color-neutral-500;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
     }
 }
 
-
 .active {
     border-radius: $radius-2xl;
-        background-color: $color-neutral-100;
+    background-color: $color-neutral-100;
 }

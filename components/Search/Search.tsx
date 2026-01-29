@@ -10,7 +10,7 @@ import { setSearchQuery } from "@/store/slices/productSlice";
 const Search = () => {
     const dispatch = useDispatch();
     const handleSearch = (value: string) => {
-       dispatch(setSearchQuery(value));
+       dispatch(setSearchQuery(value))
     };
 
     return <div className={styles.searchWrapper}>

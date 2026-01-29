@@ -2,6 +2,24 @@
 
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(272px, 1fr));
-    gap: 24px;
+    gap: convertToRem(32);
+    
+    grid-template-columns: repeat(3, 1fr); 
+
+    /* 2. Büyük Tablet / Küçük Laptop (Örn: 1024px altı) */
+    @media screen and (max-width: 1024px) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* 3. Mobil (768px ve altı) */
+    @media screen and (max-width: 768px) {
+        // Burada px eklemeyi unutma!
+        grid-template-columns: repeat(2, 1fr); // Tablette hala 2 kalsın istiyorsan
+        gap: convertToRem(16); // Mobilde boşluğu biraz daraltabilirsin
+    }
+
+    /* 4. Dar Telefon (480px ve altı) */
+    @media screen and (max-width: 480px) {
+        grid-template-columns: 1fr; // Tek sütuna düşür
+    }
 }

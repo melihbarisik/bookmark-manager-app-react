@@ -1,0 +1,43 @@
+.layoutContainer {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 280px; // Figma ölçüsü
+  flex-shrink: 0; // Sidebar'ın daralmasını engelle
+  transition: width 0.3s ease;
+  background-color: var(--bg-card);
+  overflow: hidden;
+  border-right: 1px solid var(--border-color);
+  transition: width 0.3s ease;
+
+  &:not(.closed) {
+    // Hover efektlerinin görünmesi için visible yapıyoruz
+    // Not: Animasyon bittikten sonra devreye girmesi daha sağlıklıdır
+    overflow: visible; 
+  }
+
+  &.closed {
+    width: 0;
+    opacity: 0;
+    border-right: none;
+    overflow: hidden; // Kapalıyken kesinlikle hidden kalmalı
+  }
+}
+
+.sidebarContent {
+  width: 280px; // İçerik genişliği sabit kalmalı ki büzülmesin
+}
+
+.mainContent {
+  flex: 1; // Kalan tüm alanı doldur
+  min-width: 0; // İçerik taşarsa flex'i bozmasın
+  display: flex;
+  flex-direction: column; // Navbar üstte, children altta
+  background-color: var(--bg-body);
+  
+  // EĞER Navbar çok aşağıdaysa, buradaki padding'i kontrol et!
+  padding: 0; 
+}
