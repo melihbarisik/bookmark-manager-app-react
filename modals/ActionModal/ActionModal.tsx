@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { closeModal } from "@/store/slices/modelSlice"; // Modal kapatma aksiyonun
+import { closeModal } from "@/store/slices/modalSlice"; // Modal kapatma aksiyonun
 import { toast } from "sonner";
 import styles from './Action.module.scss';
 import Button from "@/components/Button/Botton";

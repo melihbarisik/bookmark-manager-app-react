@@ -1,7 +1,7 @@
 "use client"
 
 import { useAppDispatch, useAppSelector } from "@/store/hooks"
-import { closeModal } from '../store/slices/modelSlice';
+import { closeModal } from '../store/slices/modalSlice';
 import { ActionModal } from "./ActionModal/ActionModal";
 import styles from './ModalManager.module.scss';
 

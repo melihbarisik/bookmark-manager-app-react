@@ -6,7 +6,7 @@ import { formatShortDate } from '@/utils/formatDate';
 import Select from '../Select/Select';
 import { toast } from 'sonner';
 import { useAppDispatch } from '@/store/hooks';
-import { openModal } from '@/store/slices/modelSlice';
+import { openModal } from '@/store/slices/modalSlice';
 import { getCardOptions } from '@/mocks/cardOptions';
 
 export interface CardData {
