@@ -5,7 +5,7 @@ interface Sidebar {
 }
 
 const initialState: Sidebar = {
-    isSidebarOpen: true
+    isSidebarOpen: false
 }
 
 const sidebarSlice = createSlice({

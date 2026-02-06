@@ -7,3 +7,32 @@
   line-height: map-get($style, line-height);
   letter-spacing: map-get($style, spacing);
 }
+
+// --- 1. Sabit Değerli Mixinler ---
+
+@mixin mobile {
+    @media (max-width: 480px) { // 375 yerine 480 daha güvenli bir sınır
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: 1440px) {
+        @content;
+    }
+}
+
+// --- 2. Dışarıdan Değer Alan Esnek Mixin ---
+
+// Bu mixin'e istediğin pixel değerini gönderebilirsin
+@mixin respond-to($width) {
+    @media (max-width: $width) {
+        @content;
+    }
+}

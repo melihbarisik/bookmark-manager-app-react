@@ -23,20 +23,22 @@ export default function Archived() {
         <div className={styles.homeWrapper}>
             <div className={styles.headerContainer}>
                 <span className={styles.header}>Archieved Bookmarks</span>
-                <Select
-                    label='Sort By'
-                    options={options}
-                    value={sortValue}
-                    onChange={(val) => handleOnClick(val)}
-                    icon={
-                        <Image
-                            src="/images/icon-sort.svg"
-                            alt='search-icon'
-                            width={20}
-                            height={20}
-                        />
-                    }
-                />
+                <div className={styles.sortButton}>
+                    <Select
+                        label='Sort By'
+                        options={options}
+                        value={sortValue}
+                        onChange={(val) => handleOnClick(val)}
+                        icon={
+                            <Image
+                                src="/images/icon-sort.svg"
+                                alt='search-icon'
+                                width={20}
+                                height={20}
+                            />
+                        }
+                    />
+                </div>
             </div>
             <div>
                 <Bookmarks data={products} />

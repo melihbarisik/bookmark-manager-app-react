@@ -4,7 +4,7 @@
 .overlay {
     display: none; // Masaüstünde tamamen gizli
 
-    @media screen and (max-width: 768) { // Tablet ve telefon boyutu
+    @media screen and (max-width: 1050) { // Tablet ve telefon boyutu
         display: block;
         position: fixed;
         top: 0;
@@ -38,7 +38,7 @@
     z-index: 100;
 
     // --- MOBİL AYARLARI ---
-    @media screen and (max-width: 768) {
+    @media screen and (max-width: 1050) {
         position: fixed; // Sayfanın üzerine binmesini sağlar
         top: 0;
         left: 0;

@@ -7,22 +7,34 @@
     flex-direction: column;
     padding: convertToRem(32);
     gap: convertToRem(24);
+
+    @include mobile {
+        padding:  convertToRem(24);
+    }
 }
 
 .header {
     font-size: $text-p1-size;
     font-weight: $text-p1-weight;
     line-height: $text-p1-lh;
+
+    @include mobile {
+        font-size: $text-p2-size;
+        font-weight: $text-p2-weight;
+        line-height: $text-p2-lh;
+    }
 }
 
 .headerContainer {
     display: flex;
     justify-content: space-between;
+    white-space: nowrap;
 }
 
 .sortButton {
-    width: convertToRem(107);
-    height: convertToRem(45);
-    background-color: $color-neutral-0;
-    color: black;
+
+    @include mobile {
+        width: 107px;
+        height: 42px;
+    }
 }

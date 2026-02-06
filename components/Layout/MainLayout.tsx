@@ -17,7 +17,7 @@ const MainLayout = ({ children }: LayoutProps) => {
   useEffect(() => {
     const handleResize = () => {
       // 768px altındaysa otomatik kapat
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1050) {
         dispatch(closeSidebar());
       } else {
         dispatch(openSidebar());
@@ -43,7 +43,7 @@ const MainLayout = ({ children }: LayoutProps) => {
       </main>
 
       {/* Mobil için Overlay: Sidebar açıkken arkaya tıklandığında kapansın */}
-      {isSidebarOpen && window.innerWidth < 768 && (
+      {isSidebarOpen && window.innerWidth < 1050 && (
         <div className={styles.overlay} onClick={() => dispatch(closeSidebar())} />
       )}
     </div>

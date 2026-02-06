@@ -36,7 +36,9 @@ const Navbar: React.FC = () => {
             />
           </div>
         )}
-        <Search />
+        <div className={styles.search}>
+          <Search />
+        </div>
       </div>
       <div className={styles.buttonAndLogo}>
         <div className={styles.addButton}>
